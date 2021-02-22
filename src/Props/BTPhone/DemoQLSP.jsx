@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DemoSanPham from "./DemoSanPham";
+import GioHang from "./GioHang";
 
 export default class DemoQLSP extends Component {
   mangSanPham = [
@@ -56,17 +57,22 @@ export default class DemoQLSP extends Component {
       giaBan: 5700000,
       hinhAnh: "./img/vsphone.jpg",
     },
+    gioHang:[
+      // {maSP:1,hinhAnh:"./img/applephone.jpg",tenSP:"Iphone",giaSP:1000,soLuong:1,thanhTien:10000}
+    ]
   };
   handleDetail = (Click) => {
     this.setState({
       spChiTiet: Click,
     });
   };
+  
   renderSanPham = () => {
     return this.mangSanPham.map((item, index) => {
       return (
           <div className="col-4" key={index}>
-              <DemoSanPham sanPham={item} change={this.handleDetail}/>
+          <DemoSanPham sanPham={item} change={this.handleDetail}
+            gioHang={this.themGioHang} xoaGH={ this.handleDelGH}/>
           {/* <div className="card">
             <img
               className="card-img-top"
@@ -91,6 +97,45 @@ export default class DemoQLSP extends Component {
       );
     });
   };
+  // ham xu ly 
+  themGioHang = (sanPhamClick) => {
+    // console.log(sanPhamClick)
+    let spGH = {
+      maSP: sanPhamClick.maSP,
+      tenSP: sanPhamClick.tenSP,
+      giaSP: sanPhamClick.giaBan,
+      soLuong: 1,
+      hinhAnh: sanPhamClick.hinhAnh,
+      
+    }
+    let gioHangUpdate = [...this.state.gioHang];
+    let indexSPGH = gioHangUpdate.findIndex(sp => sp.maSP === sanPhamClick.maSP);
+    if (indexSPGH !==-1) {
+      gioHangUpdate[indexSPGH].soLuong += 1;
+    } else {
+      gioHangUpdate.push(spGH)
+    }
+    
+    this.setState({
+      // gioHang ... gio hang moi
+      gioHang: gioHangUpdate
+      // gioHang:[...this.state.gioHang]
+
+    })
+  }
+  handleDelGH = (maSP) => {
+    
+     let gioHangUpdate = [...this.state.gioHang];
+    let indexSPGH = gioHangUpdate.findIndex(sp => sp.maSP === maSP.maSP);
+    if (indexSPGH !==-1) {
+      gioHangUpdate.splice(indexSPGH,1)
+    } 
+    this.setState({
+        gioHang:gioHangUpdate
+      })
+  
+    
+  }
   render() {
     let {
       maSP,
@@ -107,6 +152,8 @@ export default class DemoQLSP extends Component {
     return (
       <div>
         <div className="container">
+          <div className="mt-2 display-4">Gio Hang</div>
+          <GioHang gioHang={ this.state.gioHang}/>
           <h1>Danh Sach San Pham</h1>
           <div className="row">{this.renderSanPham()}</div>
           <div className="row mt-5">
