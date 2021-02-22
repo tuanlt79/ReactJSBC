@@ -26,7 +26,7 @@ export default class DemoSanPham extends Component {
             </button>
             <button className="btn btn-danger ml-2" onClick={() => {
               gioHang(sanPham)
-            }}>Gio Hang</button>
+            }}>Them Gio Hang</button>
           </div>
         </div>
       </div>

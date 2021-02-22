@@ -72,7 +72,7 @@ export default class DemoQLSP extends Component {
       return (
           <div className="col-4" key={index}>
           <DemoSanPham sanPham={item} change={this.handleDetail}
-            gioHang={this.themGioHang} xoaGH={ this.handleDelGH}/>
+            gioHang={this.themGioHang}/>
           {/* <div className="card">
             <img
               className="card-img-top"
@@ -153,7 +153,7 @@ export default class DemoQLSP extends Component {
       <div>
         <div className="container">
           <div className="mt-2 display-4">Gio Hang</div>
-          <GioHang gioHang={ this.state.gioHang}/>
+          <GioHang gioHang={ this.state.gioHang}  xoaGH={ this.handleDelGH}/>
           <h1>Danh Sach San Pham</h1>
           <div className="row">{this.renderSanPham()}</div>
           <div className="row mt-5">
