@@ -100,6 +100,7 @@ export default class DemoQLSP extends Component {
   // ham xu ly 
   themGioHang = (sanPhamClick) => {
     // console.log(sanPhamClick)
+    //sau khi click vào thêm giỏ hàng sẽ tạo 1 object trong giỏ hàng
     let spGH = {
       maSP: sanPhamClick.maSP,
       tenSP: sanPhamClick.tenSP,
