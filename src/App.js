@@ -3,6 +3,7 @@ import "./App.css";
 import BTRenderMap from "./RenderWithMap/BTRenderMap";
 import DemoProps from "./Props/DemoProps";
 import DemoQLSP from "./Props/BT_Props/DemoQLSP";
+import BTGioHangRedux from "./DemoRedux/BTGioHangRedux/BTGioHangRedux";
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
       {/* <RenderWithMap /> */}
       {/* <BTRenderMap /> */}
       {/* <DemoProps /> */}
-      <DemoQLSP/>
+      {/* <DemoQLSP/> */}
+      <BTGioHangRedux />
     </div>
   );
 }

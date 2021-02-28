@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 export default class SanPham extends Component {
   render() {
-    let { sanPham,changePhone } = this.props;
+    let { sanPham,changePhone, themGH } = this.props;
     return (
       <div>
-        <div className="card text-white bg-primary">
+        <div className="card text-white bg-dark">
           <img
             className="card-img-top"
             style={{ height: "348px" }}
@@ -17,6 +17,7 @@ export default class SanPham extends Component {
             <button className="btn btn-success" onClick={() => {
                 changePhone(sanPham)
             }}>Xem Chi Tiết</button>
+            <button className="btn btn-danger ml-2" onClick={() =>themGH(sanPham)}>Thêm Giỏ Hàng</button>
           </div>
         </div>
       </div>

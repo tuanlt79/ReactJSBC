@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import GioHang from "./GioHang";
 import SanPham from "./SanPham";
 
 export default class DemoQLSP extends Component {
@@ -55,6 +56,16 @@ export default class DemoQLSP extends Component {
       giaBan: 5700000,
       hinhAnh: "./img/vsphone.jpg",
     },
+    gioHang: [
+      // {
+      //   maSP: 1,
+      //   tenSP: "VinSmart Live",
+      //   soLuong: 1,
+      //   giaBan: 5700000,
+      //   hinhAnh: "./img/vsphone.jpg",
+      //   thanhTien:10000
+      // },
+    ],
   };
   handleSanPham = (Click) => {
     this.setState({
@@ -65,9 +76,68 @@ export default class DemoQLSP extends Component {
     return this.arrSanPham.map((item, index) => {
       return (
         <div className="col-4" key={index}>
-          <SanPham sanPham={item} changePhone={this.handleSanPham} />
+          <SanPham
+            sanPham={item}
+            changePhone={this.handleSanPham}
+            themGH={this.themGioHang}
+          />
         </div>
       );
+    });
+  };
+  themGioHang = (sanPhamClick) => {
+    //bước 1: tạo giỏ hàng sản phẩm đã chọn
+    let spGioHang = {
+      maSP: sanPhamClick.maSP,
+      tenSP: sanPhamClick.tenSP,
+      soLuong: 1,
+      giaBan: sanPhamClick.giaBan,
+      hinhAnh: sanPhamClick.hinhAnh,
+    };
+    //kiểm tra có sản phẩm đã chọn chưa
+    let giohangUpdate = [...this.state.gioHang];
+    let index = giohangUpdate.findIndex((sp) => sp.maSP === sanPhamClick.maSP);
+    if (index !== -1) {
+      //bước 2: kiểm tra nếu có sản phẩm thì cộng dồn
+      giohangUpdate[index].soLuong += 1;
+    } else {
+      giohangUpdate.push(spGioHang);
+    }
+    this.setState({
+      gioHang: giohangUpdate,
+    });
+  };
+  handleDelGH = (sanPhamXoa) => {
+    // let gioHangUpdate = [...this.state.gioHang];
+    // let index = gioHangUpdate.findIndex((sp) => sp.maSP === sanPhamXoa.maSP);
+    // gioHangUpdate.splice(index, 1);
+    //cách 2: xài filter
+    let gioHangUpdate = this.state.gioHang.filter(
+      (sp) => sp.maSP !== sanPhamXoa.maSP
+    );
+
+    this.setState({
+      gioHang: gioHangUpdate,
+    });
+  };
+  upDownGH = (sanPhamUpdate, tangGiam) => {
+    //tìm ra sản phẩm trong giỏ hàng dựa vào mã sản phẩm
+    let gioHangUpdate = [...this.state.gioHang];
+    // console.log(sanPhamUpdate);
+    let index = gioHangUpdate.findIndex((sp) => sp.maSP === sanPhamUpdate);
+    // console.log(index);
+    // Bước 2: tăng số lượng
+    if (index !== -1) {
+      gioHangUpdate[index].soLuong += tangGiam;
+      if (gioHangUpdate[index].soLuong <= 0) {
+        alert('Số Lượng không Hợp Lệ')
+        gioHangUpdate[index].soLuong -= tangGiam;
+       return;
+     }
+    } 
+
+    this.setState({
+      gioHang: gioHangUpdate,
     });
   };
   render() {
@@ -86,6 +156,12 @@ export default class DemoQLSP extends Component {
     return (
       <div>
         <div className="container">
+          <h3>Giỏ Hàng</h3>
+          <GioHang
+            gioHang={this.state.gioHang}
+            handleGH={this.handleDelGH}
+            tangGiamGH={this.upDownGH}
+          />
           <h1 className="text-center">Danh Sách Sản Phẩm</h1>
           <div className="row">{this.renderSanPham()}</div>
           <div className="row mt-5">
