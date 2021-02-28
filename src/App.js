@@ -8,6 +8,7 @@ import BTGioHangRedux from "./DemoRedux/BTGioHangRedux/BTGioHangRedux";
 function App() {
   return (
     <div className="App">
+      {/* <BaiTapLayout/> */}
       {/* <RenderWithMap /> */}
       {/* <BTRenderMap /> */}
       {/* <DemoProps /> */}
