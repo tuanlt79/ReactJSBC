@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class GioHang extends Component {
   render() {
-    let { gioHang, xoaGH } = this.props;
+    let { gioHang, xoaGH,tangGiam } = this.props;
 
     return (
       <div>
@@ -29,7 +29,13 @@ export default class GioHang extends Component {
                       <img style={{ height: "50px" }} src={spGH.hinhAnh} />
                     </th>
                     <th>{spGH.giaSP}</th>
-                    <th>{spGH.soLuong}</th>
+                    <th><button className="mr-2 " onClick={() => {
+                      tangGiam(spGH.maSP,-1)
+                    }}>-</button>
+                      {spGH.soLuong}
+                      <button className="ml-2" onClick={() => {
+                        tangGiam(spGH.maSP, 1)
+                      }}>+</button></th>
                     <th>{spGH.giaSP * spGH.soLuong}</th>
                     <th>
                       <button

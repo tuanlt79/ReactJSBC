@@ -125,7 +125,7 @@ export default class DemoQLSP extends Component {
   }
   handleDelGH = (maSP) => {
     
-     let gioHangUpdate = [...this.state.gioHang];
+    let gioHangUpdate = [...this.state.gioHang];
     let indexSPGH = gioHangUpdate.findIndex(sp => sp.maSP === maSP.maSP);
     if (indexSPGH !==-1) {
       gioHangUpdate.splice(indexSPGH,1)
@@ -136,6 +136,20 @@ export default class DemoQLSP extends Component {
   
     
   }
+    handleUpdown=(maSP,tangGiam) => {
+      let gioHangUpDown = [...this.state.gioHang];
+      let index = gioHangUpDown.findIndex(sp => sp.maSP === maSP)
+      if (index !==-1) {
+        gioHangUpDown[index].soLuong += tangGiam;
+        if (gioHangUpDown[index].soLuong <= 0) {
+          alert('Số lượng không hợp lệ')
+          gioHangUpDown[index].soLuong -= tangGiam;
+        }
+      }
+      this.setState({
+        gioHang:gioHangUpDown
+      })
+    }
   render() {
     let {
       maSP,
@@ -153,7 +167,7 @@ export default class DemoQLSP extends Component {
       <div>
         <div className="container">
           <div className="mt-2 display-4">Gio Hang</div>
-          <GioHang gioHang={ this.state.gioHang}  xoaGH={ this.handleDelGH}/>
+          <GioHang gioHang={this.state.gioHang} xoaGH={this.handleDelGH} tangGiam={ this.handleUpdown}/>
           <h1>Danh Sach San Pham</h1>
           <div className="row">{this.renderSanPham()}</div>
           <div className="row mt-5">
