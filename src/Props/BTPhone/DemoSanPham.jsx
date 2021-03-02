@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class DemoSanPham extends Component {
   render() {
-    let { sanPham, change,gioHang } = this.props;
+    let { sanPham, change, gioHang } = this.props;
     return (
       <div>
         <div className="card text-left">
@@ -24,13 +24,17 @@ export default class DemoSanPham extends Component {
             >
               Xem Chi Tiet
             </button>
-            <button className="btn btn-danger ml-2" onClick={() => {
-              gioHang(sanPham)
-            }}>Them Gio Hang</button>
+            <button
+              className="btn btn-danger ml-2"
+              onClick={() => {
+                gioHang(sanPham);
+              }}
+            >
+              Them Gio Hang
+            </button>
           </div>
         </div>
       </div>
-    
     );
   }
 }

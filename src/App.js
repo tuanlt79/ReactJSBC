@@ -2,9 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import BTRenderMap from "./RenderWithMap/BTRenderMap";
 import DemoProps from "./Props/DemoProps";
-import BaiTapLayout from "./components/BaiTapLayout/BaiTapLayout";
-import BTProducList from "./components/BaiTapLayout/BTProducList";
-import DemoQLSP from "./Props/BTPhone/DemoQLSP";
+import DemoQLSP from "./Props/BT_Props/DemoQLSP";
+import BTGioHangRedux from "./DemoRedux/BTGioHangRedux/BTGioHangRedux";
+import BaiTapGameXucXac from "./DemoRedux/BTGioHangRedux/BTGameXucXac/BaiTapGameXucXac";
 
 function App() {
   return (
@@ -13,7 +13,9 @@ function App() {
       {/* <RenderWithMap /> */}
       {/* <BTRenderMap /> */}
       {/* <DemoProps /> */}
-      <DemoQLSP/>
+      {/* <DemoQLSP/> */}
+      <BTGioHangRedux />
+      {/* <BaiTapGameXucXac /> */}
     </div>
   );
 }
