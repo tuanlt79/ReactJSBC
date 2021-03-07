@@ -14,8 +14,8 @@ function App() {
       {/* <BTRenderMap /> */}
       {/* <DemoProps /> */}
       {/* <DemoQLSP/> */}
-      <BTGioHangRedux />
-      {/* <BaiTapGameXucXac /> */}
+      {/* <BTGioHangRedux /> */}
+      <BaiTapGameXucXac />
     </div>
   );
 }

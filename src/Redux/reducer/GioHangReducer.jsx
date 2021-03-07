@@ -24,7 +24,7 @@ export const gioHangReducer = (state = stateDefault, action) => {
   //   const gioHangUpdate = [...state.gioHang];
   //   Bước 2: kiểm tra action.spGioHang gửi lên component có trong sate.gioHang chưa?
   //   let index = gioHangUpdate.findIndex((spGH) => {
-  //     spGH.maSP === action.spGioHang.maSP;
+  //     spGH.maSP === action.spGioHang.maSP
   //   });
   //   if (index !== -1) {
   //     gioHangUpdate[index].soLuong += 1;
@@ -78,15 +78,6 @@ export const gioHangReducer = (state = stateDefault, action) => {
       state.gioHang = gioHangUpdate;
       return { ...state };
     }
-    // case "XOA_SAN_PHAM": {
-    //   let gioHangUpdate = [...state.gioHang];
-    //   //   //Xu li xoa gio hang
-    //   gioHangUpdate = gioHangUpdate.filter((spGH) => spGH.maSP !== action.maSP);
-    //   //   //cap nhat lai state gio hang
-    //   console.log("haha");
-    //   state.gioHang = gioHangUpdate;
-    //   return { ...state };
-    // }
   }
   return { ...state };
 };
