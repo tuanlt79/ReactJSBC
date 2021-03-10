@@ -5,6 +5,7 @@ import DemoProps from "./Props/DemoProps";
 import DemoQLSP from "./Props/BT_Props/DemoQLSP";
 import BTGioHangRedux from "./DemoRedux/BTGioHangRedux/BTGioHangRedux";
 import BaiTapGameXucXac from "./DemoRedux/BTGioHangRedux/BTGameXucXac/BaiTapGameXucXac";
+import BTGamOanTuXi from "./DemoRedux/BTGioHangRedux/BTGameOanTuXi/BTGamOanTuXi";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       {/* <DemoProps /> */}
       {/* <DemoQLSP/> */}
       {/* <BTGioHangRedux /> */}
-      <BaiTapGameXucXac />
+      {/* <BaiTapGameXucXac /> */}
+      <BTGamOanTuXi />
     </div>
   );
 }
