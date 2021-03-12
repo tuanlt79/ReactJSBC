@@ -11,7 +11,12 @@ class Player extends Component {
         }
         return (
           <div className="col-4" key={index}>
-            <button style={border}>
+            <button
+              style={border}
+              onClick={() => {
+                this.props.chonDatCuoc(item.ma);
+              }}
+            >
               <img src={item.hinhAnh} alt="" width={50} />
             </button>
           </div>
@@ -38,5 +43,15 @@ class Player extends Component {
 const mapStateToProps = (state) => ({
   oanTuXi: state.BTGameOanTuXiReducer.mangOanTuXi,
 });
-
-export default connect(mapStateToProps)(Player);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    chonDatCuoc: (datCuoc) => {
+      const action = {
+        type: "CHON_DAT_CUOC",
+        datCuoc,
+      };
+      dispatch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Player);
